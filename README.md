@@ -21,17 +21,17 @@
 
 ## items テーブル
 
-| Column             | Type    | Options     |
-| ------------------ | ------  | ----------- |
-| name               | string  | null: false |
-| comment            | text    | null: false |
-| category_id        | integer | null: false |
-| status_id          | integer | null: false |
-| shipping_cost_id   | integer | null: false |
-| shipment_source_id | integer | null: false |
-| shipping_days_id   | integer | null: false |
-| price              | integer | null: false |
-
+| Column             | Type       | Options                        |
+| ------------------ | ---------- | ------------------------------ |
+| name               | string     | null: false                    |
+| comment            | text       | null: false                    |
+| category_id        | integer    | null: false                    |
+| status_id          | integer    | null: false                    |
+| shipping_cost_id   | integer    | null: false                    |
+| shipment_source_id | integer    | null: false                    |
+| shipping_days_id   | integer    | null: false                    |
+| price              | integer    | null: false                    |
+| user               | references | null: false, foreign_key: true |
 ### Association
 
 - belongs_to :user
@@ -41,8 +41,8 @@
 
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
-| user_id | references | null: false, foreign_key: true |
-| item_id | references | null: false, foreign_key: true |
+| user    | references | null: false, foreign_key: true |
+| item    | references | null: false, foreign_key: true |
 
 ### Association
 
