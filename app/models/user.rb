@@ -6,8 +6,8 @@ class User < ApplicationRecord
 
   with_options presence: true do
     validates :nickname
-    validates :email, format: { with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i },
-                      uniqueness: true
+    validates :email, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
+                      uniqueness: { case_sensitive: true}
                       #@のチェックコードは記載しなくても、エラーのレスポンスが表示される
     validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z{6,}/i }
     validates :last_name, format: { with: /\A[ぁ-んァ-ン一-龥]+\z/ }
@@ -16,4 +16,5 @@ class User < ApplicationRecord
     validates :first_name_kana, format: { with: /\A[ァ-ン]+\z/ }
     validates :birthday
   end
+
 end
