@@ -5,8 +5,9 @@ class Item < ApplicationRecord
   belongs_to_active_hash :shipping_cost
   belongs_to_active_hash :shipment_source
   belongs_to_active_hash :shipping_days
+  belongs_to :user
   has_one_attached :image
-
+  
 
   with_options presence: true do
     validates :image
