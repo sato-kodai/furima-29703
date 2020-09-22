@@ -1,0 +1,2 @@
+class ShippinsOnsController < ApplicationController
+end
