@@ -20,11 +20,9 @@ class ItemsController < ApplicationController
   end
 
   def show
-    info_gets
   end
 
   def edit
-    info_gets
   end
 
   def update
