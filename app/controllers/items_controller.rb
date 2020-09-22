@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :move_to_show, only: [:edit]
+  before_action :info_gets, only: [:edit, :update]
 
   def index
     @items = Item.all.order('created_at DESC')
@@ -19,17 +20,16 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
+    info_gets
   end
 
   def edit
-    @item = Item.find(params[:id])
+    info_gets
   end
 
   def update
     @item = Item.find(params[:id])
-    @item.update(item_params)
-    if @item.save
+    if  @item.update(item_params)
       redirect_to item_path
     else
       render :edit
@@ -45,5 +45,9 @@ class ItemsController < ApplicationController
   def move_to_show
     seller = Item.find(params[:id])
     redirect_to root_path unless current_user.id == seller.user_id
+  end
+
+  def info_gets
+    @item = Item.find(params[:id])
   end
 end
