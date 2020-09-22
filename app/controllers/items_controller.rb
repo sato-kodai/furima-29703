@@ -44,9 +44,6 @@ class ItemsController < ApplicationController
 
   def move_to_show
     seller = Item.find(params[:id])
-    unless current_user.id == seller.user_id
-      redirect_to root_path
-    end
+    redirect_to root_path unless current_user.id == seller.user_id
   end
-
 end
