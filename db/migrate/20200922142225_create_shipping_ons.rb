@@ -7,7 +7,7 @@ class CreateShippingOns < ActiveRecord::Migration[6.0]
       t.string     :address        , null: false, default: ""
       t.string     :building_name               , default: ""
       t.string     :phone_number   , null: false, default: ""
-      t.references :purchases      , null: false, foreign_key: true
+      t.references :purchase      , null: false, foreign_key: true
       t.timestamps
     end
   end
