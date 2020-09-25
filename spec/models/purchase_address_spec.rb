@@ -5,9 +5,9 @@ describe '商品購入機能' do
     before do
       buyer = FactoryBot.create(:user)
       seller = FactoryBot.create(:user)
-      item = FactoryBot.create(:item, user_id:seller.id)
+      item = FactoryBot.create(:item, user_id: seller.id)
 
-      @purchase = FactoryBot.build(:purchase_addresses, purchases_id:buyer.id, user_id:seller.id, item_id:item.id)
+      @purchase = FactoryBot.build(:purchase_addresses, purchases_id: buyer.id, user_id: seller.id, item_id: item.id)
     end
 
     context '商品購入が成功する時' do
@@ -37,13 +37,13 @@ describe '商品購入機能' do
       it '郵便番号に-がないと購入できない' do
         @purchase.postal_code = '12345678'
         @purchase.valid?
-        expect(@purchase.errors.full_messages).to include("Postal code is invalid")
+        expect(@purchase.errors.full_messages).to include('Postal code is invalid')
       end
 
       it '郵便番号の4文字目がハイフンが入力されていないと購入できない' do
         @purchase.postal_code = '1-234567'
         @purchase.valid?
-        expect(@purchase.errors.full_messages).to include("Postal code is invalid")
+        expect(@purchase.errors.full_messages).to include('Postal code is invalid')
       end
 
       it '都道府県のチェックボックスで---の状態では購入できない' do
@@ -73,9 +73,8 @@ describe '商品購入機能' do
       it '電話番号に-があると購入できない' do
         @purchase.phone_number = '1234567890-'
         @purchase.valid?
-        expect(@purchase.errors.full_messages).to include("Phone number is invalid")
+        expect(@purchase.errors.full_messages).to include('Phone number is invalid')
       end
-
     end
   end
 end

@@ -10,9 +10,9 @@ class PurchasesController < ApplicationController
   def create
     @purchase = PurchaseAddresses.new(purchase_params)
     if @purchase.valid?
-        pay_item
-        @purchase.save
-      return redirect_to root_path
+      pay_item
+      @purchase.save
+      redirect_to root_path
     else
       @item = Item.find(params[:item_id])
       render :index
@@ -20,6 +20,7 @@ class PurchasesController < ApplicationController
   end
 
   private
+
   def seller_move_index
     seller = Item.find(purchase_params[:item_id])
     redirect_to root_path unless current_user.id != seller.user_id
@@ -39,11 +40,11 @@ class PurchasesController < ApplicationController
   end
 
   def pay_item
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
       amount: item_info[:price],
       card: purchase_params[:token],
-      currency:'jpy'
+      currency: 'jpy'
     )
   end
 end
