@@ -11,7 +11,8 @@ class PurchasesController < ApplicationController
         @purchase.save
       return redirect_to root_path
     else
-      redirect_to item_purchases_path(@purchase.item_id)
+      @item = Item.find(params[:item_id])
+      render :index
     end
   end
 
