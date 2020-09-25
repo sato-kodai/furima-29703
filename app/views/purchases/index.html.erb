@@ -33,7 +33,7 @@
 
     <%= form_with url: item_purchases_path(@item.id), mehthod: :post,id: 'charge-form', class: 'transaction-form-wrap',local: true do |f| %>
 
-    <%#= render partial:"shared/error_messages", locals: {model: f.object} %>
+    <%= render partial:"shared/error_messages", locals: {model: @purchase} %>
 
     <%# カード情報の入力 %>
     <div class='credit-card-form'>
