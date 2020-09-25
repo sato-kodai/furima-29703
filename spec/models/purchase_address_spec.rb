@@ -75,6 +75,13 @@ describe '商品購入機能' do
         @purchase.valid?
         expect(@purchase.errors.full_messages).to include('Phone number is invalid')
       end
+
+      it '電話番号が12桁以上だと購入できない' do
+        @purchase.phone_number = '123456789000'
+        @purchase.valid?
+        expect(@purchase.errors.full_messages).to include('Phone number is invalid')
+      end
+
     end
   end
 end
