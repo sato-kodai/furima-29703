@@ -4,11 +4,11 @@ class PurchasesController < ApplicationController
 
   def index
     @item = Item.find(params[:item_id])
-    @purchase = PurchaseAddress.new
+    @purchase = PurchaseAddresses.new
   end
 
   def create
-    @purchase = PurchaseAddress.new(purchase_params)
+    @purchase = PurchaseAddresses.new(purchase_params)
     if @purchase.valid?
         pay_item
         @purchase.save

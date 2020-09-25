@@ -17,7 +17,6 @@ describe '商品出品機能' do
         @item.image = nil
         @item.valid?
         expect(@item.errors.full_messages).to include("Image can't be blank")
-        @item
       end
 
       it '「商品名(name)」が空では出品できない' do

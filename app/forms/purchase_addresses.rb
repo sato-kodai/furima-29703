@@ -1,4 +1,4 @@
-class PurchaseAddress
+class PurchaseAddresses
 
   include ActiveModel::Model
   attr_accessor :token, :postal_code, :prefectures_id, :municipality, :address, :building_name, :phone_number, :purchases_id, :user_id, :item_id
