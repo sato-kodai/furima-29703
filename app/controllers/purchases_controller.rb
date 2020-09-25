@@ -1,5 +1,7 @@
 class PurchasesController < ApplicationController
-  
+  before_action :seller_move_index, only: [:index]
+  before_action :move_to_root, only: [:index]
+
   def index
     @item = Item.find(params[:item_id])
     @purchase = PurchaseAddress.new
@@ -18,6 +20,15 @@ class PurchasesController < ApplicationController
   end
 
   private
+  def seller_move_index
+    seller = Item.find(purchase_params[:item_id])
+    redirect_to root_path unless current_user.id != seller.user_id
+  end
+
+  def move_to_root
+    item = Item.find(params[:item_id])
+    redirect_to root_path unless Purchase.where(item_id: Item.find(item.id)).blank?
+  end
 
   def purchase_params
     params.permit(:token, :item_id, :postal_code, :prefectures_id, :municipality, :address, :building_name, :phone_number).merge(user_id: current_user.id)
