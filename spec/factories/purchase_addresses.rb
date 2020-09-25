@@ -7,9 +7,5 @@ FactoryBot.define do
     building_name  { '' }
     phone_number   { Faker::Number.number(digits: 11) }
     token          { '00000000000000000000000' }
-    after(:build) do |purchase_address|
-      purchase_address.user_id = FactoryBot.create(:user)
-      purchase_address.item_id = FactoryBot.create(:item)
-    end
   end
 end
