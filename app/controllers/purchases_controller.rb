@@ -1,9 +1,9 @@
 class PurchasesController < ApplicationController
   before_action :seller_move_index, only: [:index]
   before_action :move_to_root, only: [:index]
+  before_action :item_info, only: [:index, :create]
 
   def index
-    @item = Item.find(params[:item_id])
     @purchase = PurchaseAddresses.new
   end
 
@@ -14,7 +14,6 @@ class PurchasesController < ApplicationController
       @purchase.save
       redirect_to root_path
     else
-      @item = Item.find(params[:item_id])
       render :index
     end
   end
