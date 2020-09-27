@@ -1,4 +1,5 @@
 class PurchasesController < ApplicationController
+  before_action :authenticate_user!, only: [:index]
   before_action :seller_move_index, only: [:index]
   before_action :move_to_root, only: [:index]
   before_action :item_info, only: [:index, :create]
