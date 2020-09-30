@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :items
   has_many :purchases
+  has_one :card, dependent: :destroy
 
   Name_REGEX = /\A[ぁ-んァ-ン一-龥]+\z/.freeze
   Name_Kana_REGEX = /\A[ァ-ン]+\z/.freeze
